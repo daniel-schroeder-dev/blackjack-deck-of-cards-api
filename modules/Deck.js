@@ -1,16 +1,21 @@
 class Deck {
     constructor() {
         this.BASE_API_URL = "https://deckofcardsapi.com/api/deck/";
+        this.element = document.createElement("div");
+        this.drawCardsEvent = null;
+        
         this.deckID = null;
         this.currentCards = [];
+        
+        document.body.append(this.element);
     }
 
     new() {
-        fetch(this.BASE_API_URL + "new")
+        fetch(this.BASE_API_URL + "new/shuffle/?deck_count=1")
             .then(response => response.json())
             .then(data => {
                 this.deckID = data.deck_id
-                this.draw(4, "both");
+                this.draw(4, "dealer");
             });
     }
 
@@ -23,13 +28,20 @@ class Deck {
     }
 
     distributeCards(cards, player) {
-        if (player === "both") {
-            console.log("cards to both players", cards);
+        if (player === "dealer") {
+            this.drawCardsEvent = new CustomEvent(
+                "drawDealerCards", { detail: cards, bubbles: true }
+            );
         } else if (player === "computer") {
-            console.log("cards to computer", cards);
+            this.drawCardsEvent = new CustomEvent(
+                "drawComputerCards", { detail: cards, bubbles: true }
+            );
         } else if (player == "player") {
-            console.log("cards to player", cards);
+            this.drawCardsEvent = new CustomEvent(
+                "drawPlayerCards", { detail: cards, bubbles: true }
+            );
         }
+        this.element.dispatchEvent(this.drawCardsEvent);
     }
 
     shuffle() {

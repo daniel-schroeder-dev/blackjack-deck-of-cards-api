@@ -26,6 +26,7 @@ class SignupModal {
 
     remove(e) {
         e.preventDefault();
+        localStorage.setItem("username", this.usernameInputElement.value);
         this.element.dispatchEvent(this.triggerStartEvent);
         this.element.remove();
     }
