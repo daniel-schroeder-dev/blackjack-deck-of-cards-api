@@ -22,17 +22,19 @@ button {
     position: relative;
     width: 50vw;
     height: 500px;
-    border: 1px solid blue;
+    background-color: #049745;
 }
 
 #button-container {
     position: absolute;
-    bottom: 50px;
+    bottom: 15px;
     right: 17vw;
 }
 
 #button-container > button {
     margin: 12px;
+    width: 75px;
+    background-color: #1065ff;
 }
 
 .modal {

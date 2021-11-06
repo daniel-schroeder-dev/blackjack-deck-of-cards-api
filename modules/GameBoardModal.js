@@ -1,5 +1,6 @@
 class GameBoardModal {
-    constructor() {
+    constructor(deck) {
+        this.deck = deck;
         this.element = document.createElement("div");
         this.element.id = "game-board";
 
@@ -22,6 +23,7 @@ class GameBoardModal {
 
     render() {
         document.querySelector("main").append(this.element);
+        this.deck.new();
     }
 }
 
