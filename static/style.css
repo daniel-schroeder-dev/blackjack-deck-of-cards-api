@@ -27,7 +27,7 @@ button {
 
 #button-container {
     position: absolute;
-    bottom: 15px;
+    bottom: 0;
     right: 17vw;
 }
 
@@ -35,6 +35,24 @@ button {
     margin: 12px;
     width: 75px;
     background-color: #1065ff;
+}
+
+#player, #computer {
+    border: 1px solid black;
+    height: 175px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    padding: 12px;
+}
+
+#computer {
+    margin-bottom: 40px;
+}
+
+#player > p,
+#computer > p {
+    margin: 0;
 }
 
 .modal {
@@ -52,6 +70,18 @@ button {
     color: #242424;
 }
 
+.hand-container {
+    margin-top: 12px;
+}
+
+.hand-container > img {
+    width: 100px;
+    margin-right: 12px;
+}
+
+.hand-container > img:last-child {
+    margin-right: 0;
+}
 
 
 

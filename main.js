@@ -3,13 +3,16 @@ import { SignupModal} from "./modules/SignupModal.js"
 import { GameBoardModal} from "./modules/GameBoardModal.js"
 import { Deck } from "./modules/Deck.js"
 import { Dealer } from "./modules/Dealer.js"
+import { Player } from "./modules/Player.js"
 
 
+const player = new Player("Player");
+const computer = new Player("Computer");
+const dealer = new Dealer(player, computer);
 const welcomeModal = new WelcomeModal();
-const signupModal = new SignupModal();
+const signupModal = new SignupModal(player);
 const deck = new Deck();
-const gameBoardModal = new GameBoardModal(deck);
-const dealer = new Dealer();
+const gameBoardModal = new GameBoardModal(deck, player, computer);
 
 
 window.addEventListener("DOMContentLoaded", () => welcomeModal.render());

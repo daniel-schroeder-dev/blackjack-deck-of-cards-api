@@ -1,6 +1,9 @@
 class GameBoardModal {
-    constructor(deck) {
+    constructor(deck, player, computer) {
         this.deck = deck;
+        this.player = player;
+        this.computer = computer;
+
         this.element = document.createElement("div");
         this.element.id = "game-board";
 
@@ -18,11 +21,15 @@ class GameBoardModal {
         this.buttonContainer.append(this.hitButton);
         this.buttonContainer.append(this.stayButton);
 
+        this.element.append(this.computer.element);
+        this.element.append(this.player.element);
         this.element.append(this.buttonContainer);
     }
 
     render() {
         document.querySelector("main").append(this.element);
+        this.player.render();
+        this.computer.render();
         this.deck.new();
     }
 }

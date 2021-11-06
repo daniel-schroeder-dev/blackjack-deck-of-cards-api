@@ -1,5 +1,6 @@
 class SignupModal {
-    constructor() {
+    constructor(player) {
+        this.player = player;
         this.triggerStartEvent = new Event("triggerStart", { bubbles: true });
 
         this.element = document.createElement("form");
@@ -26,7 +27,7 @@ class SignupModal {
 
     remove(e) {
         e.preventDefault();
-        localStorage.setItem("username", this.usernameInputElement.value);
+        this.player.username = this.usernameInputElement.value;
         this.element.dispatchEvent(this.triggerStartEvent);
         this.element.remove();
     }
