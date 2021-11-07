@@ -29,7 +29,7 @@ class GameBoardModal {
         document.querySelector("main").append(this.element);
         this.player.render();
         this.dealer.render();
-        this.dealer.deck.draw(4);
+        this.dealer.firstDraw();
     }
 }
 

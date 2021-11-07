@@ -23,7 +23,3 @@ document.body.addEventListener("triggerGameBoard", e => {
     player.username = e.detail;
     gameBoardModal.render();
 });
-
-document.body.addEventListener("dealerDrawCards", e => {
-    dealer.distributeCards(e.detail);
-});

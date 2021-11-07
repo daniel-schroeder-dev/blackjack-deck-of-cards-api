@@ -7,11 +7,13 @@ class Dealer extends Player {
         this.deck = deck;
     }
 
-    distributeCards(cards) {
+    async firstDraw() {
+        const cards = await this.deck.draw(4);
         this.player.hand = cards.slice(0, 2);
         this.hand = cards.slice(2);
-        const event = new CustomEvent("dealerDistributeCards", { bubbles: true });
-        this.element.dispatchEvent(event);
+        this.element.dispatchEvent(
+            new CustomEvent("dealerDistributeCards", { bubbles: true })
+        );
     }
 }
 
