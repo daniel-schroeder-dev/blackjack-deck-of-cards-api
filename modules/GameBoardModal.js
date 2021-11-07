@@ -1,24 +1,19 @@
+import { buildDOMElement } from "../utils/helpers.js";
+
 class GameBoardModal {
     constructor(player, dealer) {
         this.player = player;
         this.dealer = dealer;
 
-        this.element = document.createElement("div");
-        this.element.id = "game-board";
-
-        this.buttonContainer = document.createElement("div");
-        this.buttonContainer.id = "button-container";
-
-        this.hitButton = document.createElement("button");
-        this.hitButton.id = "hit-button";
-        this.hitButton.textContent = "Hit";
-
-        this.stayButton = document.createElement("button");
-        this.stayButton.id = "stay-button";
-        this.stayButton.textContent = "Stay";
-
+        this.hitButton = buildDOMElement("button", "hit-button", "Hit");
+        this.stayButton = buildDOMElement("button", "stay-button", "Stay");
+        
+        this.buttonContainer = buildDOMElement("div", "button-container");
+        
         this.buttonContainer.append(this.hitButton);
         this.buttonContainer.append(this.stayButton);
+        
+        this.element = buildDOMElement("div", "game-board")
 
         this.element.append(this.dealer.element);
         this.element.append(this.player.element);
