@@ -1,9 +1,10 @@
 import { Player } from "./Player.js";
 
 class Dealer extends Player {
-    constructor(username, player) {
+    constructor(username, player, deck) {
         super(username);
         this.player = player;
+        this.deck = deck;
     }
 
     distributeCards(cards) {

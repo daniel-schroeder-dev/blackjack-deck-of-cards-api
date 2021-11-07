@@ -8,6 +8,7 @@ class Deck {
         this.currentCards = [];
         
         document.body.append(this.element);
+        this.new();
     }
 
     new() {
@@ -15,33 +16,21 @@ class Deck {
             .then(response => response.json())
             .then(data => {
                 this.deckID = data.deck_id
-                this.draw(4, "dealer");
             });
     }
 
-    draw(numCards, player) {
+    draw(numCards) {
         fetch(`${this.BASE_API_URL}${this.deckID}/draw/?count=${numCards}`)
             .then(response => response.json())
             .then(data => {
-                this.distributeCards(data.cards, player)
+                this.distributeCards(data.cards)
             });
     }
 
-    distributeCards(cards, player) {
-        if (player === "dealer") {
-            this.drawCardsEvent = new CustomEvent(
-                "drawDealerCards", { detail: cards, bubbles: true }
-            );
-        } else if (player === "computer") {
-            this.drawCardsEvent = new CustomEvent(
-                "drawComputerCards", { detail: cards, bubbles: true }
-            );
-        } else if (player == "player") {
-            this.drawCardsEvent = new CustomEvent(
-                "drawPlayerCards", { detail: cards, bubbles: true }
-            );
-        }
-        this.element.dispatchEvent(this.drawCardsEvent);
+    distributeCards(cards) {
+        this.element.dispatchEvent(new CustomEvent(
+            "dealerDrawCards", { detail: cards, bubbles: true }
+        ));
     }
 
     shuffle() {

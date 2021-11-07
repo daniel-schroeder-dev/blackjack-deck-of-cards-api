@@ -1,8 +1,7 @@
 class GameBoardModal {
-    constructor(deck, player, computer) {
-        this.deck = deck;
+    constructor(player, dealer) {
         this.player = player;
-        this.computer = computer;
+        this.dealer = dealer;
 
         this.element = document.createElement("div");
         this.element.id = "game-board";
@@ -21,7 +20,7 @@ class GameBoardModal {
         this.buttonContainer.append(this.hitButton);
         this.buttonContainer.append(this.stayButton);
 
-        this.element.append(this.computer.element);
+        this.element.append(this.dealer.element);
         this.element.append(this.player.element);
         this.element.append(this.buttonContainer);
     }
@@ -29,8 +28,8 @@ class GameBoardModal {
     render() {
         document.querySelector("main").append(this.element);
         this.player.render();
-        this.computer.render();
-        this.deck.new();
+        this.dealer.render();
+        this.dealer.deck.draw(4);
     }
 }
 

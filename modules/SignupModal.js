@@ -26,7 +26,7 @@ class SignupModal {
         e.preventDefault();
         const username = this.usernameInputElement.value;
         this.element.dispatchEvent(
-            new CustomEvent("triggerStart", { bubbles: true, detail: username })
+            new CustomEvent("triggerGameBoard", { bubbles: true, detail: username })
         );
         this.element.remove();
     }
