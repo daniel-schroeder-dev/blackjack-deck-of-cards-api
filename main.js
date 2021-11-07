@@ -1,9 +1,9 @@
-import { WelcomeModal } from "./modules/WelcomeModal.js"
-import { SignupModal } from "./modules/SignupModal.js"
-import { GameBoardModal } from "./modules/GameBoardModal.js"
-import { Deck } from "./modules/Deck.js"
-import { Dealer } from "./modules/Dealer.js"
-import { Player } from "./modules/Player.js"
+import { WelcomeModal } from "./modules/WelcomeModal.js";
+import { SignupModal } from "./modules/SignupModal.js";
+import { GameBoardModal } from "./modules/GameBoardModal.js";
+import { Deck } from "./modules/Deck.js";
+import { Dealer } from "./modules/Dealer.js";
+import { Player } from "./modules/Player.js";
 
 const deck = new Deck();
 
@@ -12,9 +12,7 @@ const dealer = new Dealer("Dealer", player, deck);
 
 const welcomeModal = new WelcomeModal();
 const signupModal = new SignupModal();
-
 const gameBoardModal = new GameBoardModal(player, dealer);
-
 
 window.addEventListener("DOMContentLoaded", () => welcomeModal.render());
 

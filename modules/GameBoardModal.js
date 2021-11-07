@@ -13,7 +13,7 @@ class GameBoardModal {
         this.buttonContainer.append(this.hitButton);
         this.buttonContainer.append(this.stayButton);
         
-        this.element = buildDOMElement("div", "game-board")
+        this.element = buildDOMElement("div", "game-board");
 
         this.element.append(this.dealer.element);
         this.element.append(this.player.element);

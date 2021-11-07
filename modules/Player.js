@@ -13,7 +13,7 @@ class Player {
         this.element.append(this.usernameElement);
         this.element.append(this.handContainer);
 
-        document.body.addEventListener("dealerDistributeCards", () => this.render())
+        document.body.addEventListener("dealerDistributeCards", () => this.render());
     }
 
     render() {
