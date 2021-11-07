@@ -49,7 +49,7 @@ input {
     background-color: #1065ff;
 }
 
-#player, #computer {
+#player, #dealer {
     border: 1px solid black;
     height: 175px;
     text-align: center;
@@ -58,12 +58,12 @@ input {
     padding: 12px;
 }
 
-#computer {
+#dealer {
     margin-bottom: 40px;
 }
 
 #player > p,
-#computer > p {
+#dealer > p {
     margin: 0;
 }
 

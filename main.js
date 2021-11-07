@@ -7,18 +7,22 @@ import { Player } from "./modules/Player.js"
 
 
 const player = new Player("Player");
-const computer = new Player("Computer");
-const dealer = new Dealer(player, computer);
+const dealer = new Dealer("Dealer", player);
+
 const welcomeModal = new WelcomeModal();
-const signupModal = new SignupModal(player);
+const signupModal = new SignupModal();
+
 const deck = new Deck();
-const gameBoardModal = new GameBoardModal(deck, player, computer);
+const gameBoardModal = new GameBoardModal(deck, player, dealer);
 
 
 window.addEventListener("DOMContentLoaded", () => welcomeModal.render());
 
 document.body.addEventListener("triggerSignup", () => signupModal.render());
-document.body.addEventListener("triggerStart", () => gameBoardModal.render());
+document.body.addEventListener("triggerStart", e => {
+    player.username = e.detail;
+    gameBoardModal.render();
+});
 
 document.body.addEventListener("drawDealerCards", e => {
     dealer.distributeCards(e.detail);

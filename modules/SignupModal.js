@@ -1,8 +1,5 @@
 class SignupModal {
-    constructor(player) {
-        this.player = player;
-        this.triggerStartEvent = new Event("triggerStart", { bubbles: true });
-
+    constructor() {
         this.element = document.createElement("form");
         this.element.id = "signup-modal";
         this.element.classList.add("modal");
@@ -27,8 +24,10 @@ class SignupModal {
 
     remove(e) {
         e.preventDefault();
-        this.player.username = this.usernameInputElement.value;
-        this.element.dispatchEvent(this.triggerStartEvent);
+        const username = this.usernameInputElement.value;
+        this.element.dispatchEvent(
+            new CustomEvent("triggerStart", { bubbles: true, detail: username })
+        );
         this.element.remove();
     }
 }
